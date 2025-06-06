@@ -19,7 +19,7 @@ userRouter.post("/login", async (req, res) => {
   const { email, pass } = req.body;
   const result = await userModel.findOne({ email, pass });
   if (!result) return res.json({ message: "Invalid user or password" });
-  const token =jwt.sign({email:result.email, id:result_id},SECRET_KEY);
+  const token =jwt.sign({email:result.email, id:result._id},SECRET_KEY);
   console.log(result);
   return res.json({user:result,token:token});
 });
